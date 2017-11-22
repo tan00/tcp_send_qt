@@ -1,0 +1,11 @@
+#ifndef SOCKET_MANAGER_H
+#define SOCKET_MANAGER_H
+
+
+class SOCKET_MANAGER
+{
+public:
+    SOCKET_MANAGER();
+};
+
+#endif // SOCKET_MANAGER_H
