@@ -297,6 +297,12 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "TCP SEND", Q_NULLPTR));
         action_Open->setText(QApplication::translate("MainWindow", "&Open", Q_NULLPTR));
+#ifndef QT_NO_STATUSTIP
+        action_Open->setStatusTip(QApplication::translate("MainWindow", "Open file ", Q_NULLPTR));
+#endif // QT_NO_STATUSTIP
+#ifndef QT_NO_SHORTCUT
+        action_Open->setShortcut(QApplication::translate("MainWindow", "Ctrl+O", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
         label->setText(QApplication::translate("MainWindow", "IP", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Port", Q_NULLPTR));
         label_3->setText(QApplication::translate("MainWindow", "HeadLen", Q_NULLPTR));

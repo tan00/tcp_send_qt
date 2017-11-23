@@ -4,7 +4,7 @@
 class QString;
 
 class AppSetting
-{
+{    
 public:
     //全局配置参数
     static int LeftPanelWidth;          //左面板宽度
@@ -29,9 +29,9 @@ public:
     static int IntervalTcpClient;       //发送数据间隔
     static QString TcpServerIP;         //服务器IP
     static int TcpServerPort;           //服务器端口
-    static int HEADLEN;     //报文头长度
-    static int LOOPS;     //单线程循环数
-    static int THREADS;    //线程数
+    static int Headlen;     //报文头长度
+    static int Loops;     //单线程循环数
+    static int Threads;    //线程数
 
 
     //UDP服务器配置参数

@@ -1,8 +1,17 @@
 ﻿#include <QtCore>
 #include <QtGui>
+#include <qdebug.h>
 //#include <QtSql>
 //#include <QtNetwork>
 //#include <QtXml>
+
+#ifdef WIN32
+#include <windows.h>
+#define msleep(time) Sleep(time)
+#elif
+#include <time.h>
+#define msleep(time) sleep((time)*1000)
+#endif
 
 #if (QT_VERSION > QT_VERSION_CHECK(5,0,0))
 #include <QtWidgets>
@@ -539,6 +548,19 @@ public:
         }
 
         return buffer;
+    }
+
+    static void addHeadLen(QByteArray& array, int headLen)
+    {
+        int len = array.length();
+        char tmp[10] = {0};
+        for(int i=9;i>(9-headLen);i--)
+        {
+            tmp[i] = len % 256;
+            len /= 256;
+        }
+        QByteArray QBtmp(tmp+10-headLen, headLen  ); 
+        array.prepend(QBtmp);
     }
 
     static char convertHexChar(char ch)

@@ -14,12 +14,12 @@ QString AppSetting::PlatForm = "WIN";
 QString AppSetting::SendFileName = "send.txt";
 QString AppSetting::DeviceFileName = "device.txt";
 
-bool AppSetting::HexSendTcpServer = false;
-bool AppSetting::HexReceiveTcpServer = false;
-bool AppSetting::DebugTcpServer = false;
-bool AppSetting::AutoSendTcpServer = false;
-int AppSetting::IntervalTcpServer = 1000;
-int AppSetting::TcpListenPort = 6000;
+//bool AppSetting::HexSendTcpServer = false;
+//bool AppSetting::HexReceiveTcpServer = false;
+//bool AppSetting::DebugTcpServer = false;
+//bool AppSetting::AutoSendTcpServer = false;
+//int AppSetting::IntervalTcpServer = 1000;
+//int AppSetting::TcpListenPort = 6000;
 
 bool AppSetting::HexSendTcpClient = false;
 bool AppSetting::HexReceiveTcpClient = false;
@@ -28,6 +28,9 @@ bool AppSetting::AutoSendTcpClient = false;
 int AppSetting::IntervalTcpClient = 1000;
 QString AppSetting::TcpServerIP = "127.0.0.1";
 int AppSetting::TcpServerPort = 6000;
+int AppSetting::Headlen = 2;
+int AppSetting::Loops = 1;
+int AppSetting::Threads = 1;
 
 bool AppSetting::HexSendUdpServer = false;
 bool AppSetting::HexReceiveUdpServer = false;
@@ -63,6 +66,9 @@ void AppSetting::ReadConfig()
     AppSetting::IntervalTcpClient = set.value("IntervalTcpClient").toInt();
     AppSetting::TcpServerIP = set.value("TcpServerIP").toString();
     AppSetting::TcpServerPort = set.value("TcpServerPort").toInt();
+    AppSetting::Headlen = set.value("HeadLen").toInt();
+    AppSetting::Loops = set.value("Loops").toInt();
+    AppSetting::Threads = set.value("Threads").toInt();
     set.endGroup();
 
 
@@ -108,7 +114,10 @@ void AppSetting::WriteConfig()
     set.setValue("AutoSendTcpClient", AppSetting::AutoSendTcpClient);
     set.setValue("IntervalTcpClient", AppSetting::IntervalTcpClient);
     set.setValue("TcpServerIP", AppSetting::TcpServerIP);
-    set.setValue("TcpServerPort", AppSetting::TcpServerPort);
+    set.setValue("TcpServerPort", AppSetting::TcpServerPort);    
+    set.setValue("HeadLen", AppSetting::Headlen);
+    set.setValue("Loops", AppSetting::Loops);
+    set.setValue("Threads", AppSetting::Threads);
     set.endGroup();
 
 //	set.beginGroup("TcpServerConfig");
@@ -130,6 +139,8 @@ void AppSetting::WriteConfig()
 //    set.setValue("UdpClientIP", AppSetting::UdpClientIP);
 //    set.setValue("UdpClientPort", AppSetting::UdpClientPort);
 //	set.endGroup();
+
+
 }
 
 void AppSetting::NewConfig()

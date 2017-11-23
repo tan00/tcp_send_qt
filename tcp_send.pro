@@ -26,13 +26,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    appSetting.cpp
+    appSetting.cpp \
+    socket_manager.cpp \
+    csv.cpp
 
 HEADERS += \
         mainwindow.h \
     myhelper.h \
     appSetting.h \
-    ui_mainwindow.h
+    ui_mainwindow.h \
+    socket_manager.h \
+    csv.h
 
 
 FORMS += \
